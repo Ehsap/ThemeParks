@@ -14,9 +14,10 @@ public class ThemeParks extends AOSimulationModel
 	// Constants available from Constants class
 	/* Parameter */
         // Define the parameters
-	// RG.numCars see Train Class
+	
 	int numTrains;				// number of trains in the system (parameter)
 	int loadPlan;			// customer loadplan: ONE_SIDE, TWO_SIDE, WAIT (parameter)
+	int[] numCars;				// number of cars per train (parameter)
 	
 	
 	// !? I added those, not in CM! - or better in Constants?
@@ -35,9 +36,9 @@ public class ThemeParks extends AOSimulationModel
 	
 	// ? all ArrayLists?, What about numTrains?
 	protected Train [] rgTrain = new Train[numTrains];		// RG.Train
-	protected Boarding [] qBoarding = new Boarding[4];	    // Q.Boarding
+	protected BoardingLine [] qBoardingLine = new BoardingLine[4];	    // Q.BoardingLine
 	protected TrainLine [] qTrainLine = new TrainLine[4];	// Q.TrainLine
-	
+
 	// ? there are 4 TrainLines, but a TrainLine is supposed to contain several Trains - how to implement that?
 	
 	
@@ -57,9 +58,12 @@ public class ThemeParks extends AOSimulationModel
 
 
 	// Constructor
-	public ThemeParks(double t0time, double tftime, /*define other args,*/ Seeds sd)
+	public ThemeParks(double t0time, double tftime, int numTrains, int[] numCars, int loadPlan, Seeds sd)
 	{
 		// Initialise parameters here
+		this.numTrains = numTrains;
+		this.numCars = numCars;
+		this.loadPlan = loadPlan;
 		
 		// Create RVP object with given seed
 		rvp = new RVPs(this,sd);
@@ -72,6 +76,7 @@ public class ThemeParks extends AOSimulationModel
 		     // Schedule the first arrivals and employee scheduling
 		Initialise init = new Initialise(this);
 		scheduleAction(init);  // Should always be first one scheduled.
+		//TODO: Schedule other actions 
 		// Schedule other scheduled actions and acitvities here
 	}
 

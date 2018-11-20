@@ -20,7 +20,7 @@ class FrogCustArrivals extends ScheduledAction {
 	@Override
 	protected void actionEvent() {
 		// Q.Boarding[FROG].n <-- Q.Boarding[FROG].n + 1
-		model.qBoarding[Constants.FROG] // ? ++
+		model.qBoarding[Constants.FROG]++;
 	}
 	
 

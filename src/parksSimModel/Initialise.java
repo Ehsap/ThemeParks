@@ -20,24 +20,30 @@ class Initialise extends ScheduledAction
 	{
 		// System Initialisation
                 // Add initilisation instructions
+		model.qBoardingLine[Constants.FROG].n = 0;
+		model.qBoardingLine[Constants.SKUNK].n = 0;
+		model.qBoardingLine[Constants.GATOR].n = 0; 
+		model.qBoardingLine[Constants.RACCOON].n = 0; 
 		
+		model.qTrainLine[Constants.FROG].n = 0;
+		model.qTrainLine[Constants.SKUNK].n = 0; 
+		model.qTrainLine[Constants.GATOR].n = 0; 
+		model.qTrainLine[Constants.RACCOON].n = 0; 
+
 		// Distribution of Trains around the TrainLines		
 		int stnId = Constants.FROG;
 		
-		for (int i=0; i < model.rgTrain.length-1; i++) {	// ? length? -  where to declare numTrains?
-			model.qTrainLine[stnId] = model.rgTrain[i]; // of course, this doesn't work - how does qTrainLine work?
+		for (int i=0; i < model.numTrains-1; i++) {	
+			model.qTrainLine[stnId].spInsertQue(model.rgTrain[i]);
 			stnId = (stnId+1)%4;
 		}
-
+		
+		int[] defaultDestinations = {0,0,0,0};
 		// Set all Train Attributes to default
 		for (int i=0; i < model.rgTrain.length-1; i++) {
-			model.rgTrain[i].totalCapacity = model.rgTrain[i].numCars * 25;
-			
-			for (int j=0; j < model.rgTrain[i].destinations.length-1; j++) {
-				model.rgTrain[i].destinations[j] = 0;
-			}			
-			
-			model.rgTrain[i].trainState = Train.WAITING;	//<-- I introduced this constant
+			model.rgTrain[i].totalCapacity = model.numCars[i] * 25;
+			model.rgTrain[i].destinations = defaultDestinations;		
+			model.rgTrain[i].trainState = Train.WAITING;
 		}
 
 	}

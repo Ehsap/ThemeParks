@@ -2,8 +2,8 @@ package parksSimModel;
 
 class Train {
 	
+	
 	// Attributes
-	int numCars;				// number of cars per train (parameter)
 	
 	int totalCapacity;		// maximum amount of passengers that the train can carry
 	int [] destinations = new int[4]; 	// list of four values [n0, n1, n2, n3] that represent the number of customers on the train, 
@@ -14,5 +14,12 @@ class Train {
 	static final int WAITING = 0;
 	static final int BOARDING = 1;
 	static final int MOVING = 2;
+	
+	public Train(int totalCapacity, int[] destinations, int trainState){
+		this.totalCapacity = totalCapacity;
+		this.destinations = destinations;
+		this.trainState = trainState;
+	}
+
 
 }
