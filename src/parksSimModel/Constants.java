@@ -11,5 +11,8 @@ class Constants
 	protected final static int SKUNK = 1;
 	protected final static int GATOR = 2;
 	protected final static int RACCOON = 3;
-
+	
+	protected final static int ONE_SIDE = 0;
+	protected final static int TWO_SIDE = 1;
+	protected final static int WAIT = 2;
 }
