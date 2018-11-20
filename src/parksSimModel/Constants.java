@@ -7,9 +7,9 @@ class Constants
 	// Example: protected final static double realConstant = 8.0;
 	
 	// ? protected?
-	final static int FROG = 0;
-	final static int SKUNK = 1;
-	final static int GATOR = 2;
-	final static int RACCOON = 3;
+	protected final static int FROG = 0;
+	protected final static int SKUNK = 1;
+	protected final static int GATOR = 2;
+	protected final static int RACCOON = 3;
 
 }
