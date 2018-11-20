@@ -2,10 +2,7 @@ package parksSimModel;
 
 import java.util.ArrayList;
 
-import manufacturing.Machines;
-import portModelV1.Berths;
-import portModelV1.Tanker;
-import portModelV1.Tug;
+
 import simulationModelling.AOSimulationModel;
 import simulationModelling.Behaviour;
 import simulationModelling.SequelActivity;
